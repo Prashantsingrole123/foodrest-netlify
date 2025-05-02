@@ -7,6 +7,10 @@ RUN mvn clean package -DskipTests
 
 # Step 2: Runtime stage
 FROM eclipse-temurin:17-jdk
+
+# Install ca-certificates to avoid MongoDB SSL errors
+RUN apt-get update && apt-get install -y ca-certificates
+
 WORKDIR /app
 COPY --from=builder /app/target/foodiesapi-0.0.1-SNAPSHOT.jar app.jar
 
