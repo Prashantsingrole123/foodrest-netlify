@@ -189,7 +189,7 @@ public class FoodServiceImpl implements FoodService {
             String imageUrl = uploadFile(file);
             newFoodEntity.setImageUrl(imageUrl);
         } else {
-            newFoodEntity.setImageUrl(null); // dummy will be set during read
+            newFoodEntity.setImageUrl(DUMMY_IMAGE_URL); // dummy will be set during read
         }
 
         newFoodEntity = foodRepository.save(newFoodEntity);
